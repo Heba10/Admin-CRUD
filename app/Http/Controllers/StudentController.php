@@ -13,4 +13,26 @@ class StudentController extends Controller
             'students'=> $students,
             ]);
         }
+
+
+        public function show()
+    {
+        //first 
+       //take the id from url param
+       $request = request();
+       $studentId = $request->student;
+        //sec
+       //query to retrieve the student by id
+       $student = student::find($studentId);
+      
+        //theard
+        //key->value 
+       //send the value to the view
+       return view('students.show',[
+           'student' => $student,
+       ]);
+
+
+       
+    }
 }

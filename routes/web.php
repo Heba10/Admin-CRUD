@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 Route::get('/', 'StudentController@index')->name('Students.index');
 
+
+Route::get('/{student}', 'StudentController@show')->name('students.show');
+

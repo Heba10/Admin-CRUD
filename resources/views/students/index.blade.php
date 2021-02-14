@@ -34,6 +34,7 @@
                   <td>{{ $student->password }}</td>
                   <td>{{ $student->created_at }}</td>
 
+                  <td><a href="{{route('students.show',['student' => $student->id])}}" class="btn btn-primary btn-sm">View Details</a></td>
          
               @endforeach
               </tbody>
