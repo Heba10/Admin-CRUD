@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\StudentRequest;
 use Illuminate\Http\Request;
 use App\Student;
 
@@ -48,7 +48,7 @@ class StudentController extends Controller
         return view('students.create');
     }
 
-    public function store()
+    public function store(StudentRequest $request)
     {
          //get the request data
          $request = request();
@@ -86,7 +86,7 @@ class StudentController extends Controller
         ]);
     }
     
-    public function update() {
+    public function update(StudentRequest $request) {
         $request = request();
     
         student::where('id', $request->student)->update([
