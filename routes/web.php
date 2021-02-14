@@ -27,6 +27,13 @@ Route::get('/students/create', 'StudentController@create')->name('students.creat
 //route for taking the submition and storing the data in db
 Route::post('/students', 'StudentController@store')->name('students.store');
 
+Route::get('/{student}/edit', 'StudentController@edit')->name('students.edit');
+    
+Route::put('/{student}', 'StudentController@update')->name('students.update');
 
+
+
+
+Route::delete('/{student}', 'StudentController@destroy')->name('students.destroy');
 Route::get('/{student}', 'StudentController@show')->name('students.show');
 

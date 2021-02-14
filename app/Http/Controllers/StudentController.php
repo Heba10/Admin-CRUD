@@ -65,7 +65,40 @@ class StudentController extends Controller
          return redirect()->route('students.index');
     }
 
+    
+    public function destroy() {
+        $request = request();
+    //dd( $request)
+        Student::where('id', $request->student)->delete();
+    
+        return redirect()->route('students.index');
+    }
 
+     
+
+    public function edit() {
+    
+        $student = student::find(request()->student);
+    
+        return view('students.edit', [
+           
+            'student' => $student
+        ]);
+    }
+    
+    public function update() {
+        $request = request();
+    
+        student::where('id', $request->student)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'speciality' =>  $request->speciality,
+            'password' =>  $request->password,
+        ]);
+    
+        return redirect()->route('students.index');
+    }
+    
 
 
 
