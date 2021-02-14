@@ -7,6 +7,7 @@ use App\Student;
 
 class StudentController extends Controller
 {
+    //index
     public function index() {
         $students = Student::paginate(5);
         return view('students.index', [
@@ -14,8 +15,8 @@ class StudentController extends Controller
             ]);
         }
 
-
-        public function show()
+    //show
+    public function show()
     {
         //first 
        //take the id from url param
@@ -23,7 +24,7 @@ class StudentController extends Controller
        $studentId = $request->student;
         //sec
        //query to retrieve the student by id
-       $student = student::find($studentId);
+       $student = Student::find($studentId);
       
         //theard
         //key->value 
@@ -35,4 +36,38 @@ class StudentController extends Controller
 
        
     }
+
+
+
+
+    //create & store
+    public function create()
+    {
+    
+
+        return view('students.create');
+    }
+
+    public function store()
+    {
+         //get the request data
+         $request = request();
+
+         //store the request data in the db
+         Student::create([
+             'name' => $request->name,
+             'email' => $request->email,
+             'speciality' =>  $request->speciality,
+             'password' =>  $request->password,
+            
+         ]);
+
+         return redirect()->route('students.index');
+    }
+
+
+
+
+
+
 }
